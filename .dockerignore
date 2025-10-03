@@ -1,0 +1,10 @@
+.git
+.gitignore
+
+*.log
+*.tmp
+*.bak
+
+# Docker files
+Dockerfile*
+.dockerignore
