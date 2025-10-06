@@ -106,8 +106,8 @@ int insertSortedLL(LinkedList* ll, int item) {
 
     if (cur != NULL) {
         pNode->item = item;
-        pNode->next = cur->next;
-        cur->next = pNode;
+        pNode->next = cur;
+        last->next = pNode;
     } else {
         pNode->item = item;
         pNode->next = NULL;
