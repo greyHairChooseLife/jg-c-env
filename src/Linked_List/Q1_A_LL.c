@@ -78,7 +78,47 @@ int main() {
 
 //////////////////////////////////////////////////////////////////////////////////
 
-int insertSortedLL(LinkedList* ll, int item) { /* add your code here */ }
+int insertSortedLL(LinkedList* ll, int item) {
+    /* PSEUDO_CODE::  */
+    // 1. next = NULL까지 순회
+    // 2. 자기랑 똑같은거 만나면 -1 리턴
+    // 3. 자기보다 큰거 만나면 그 직전에 넣기
+    // 4. NULL만나면 마지막에 넣기
+    // 5. 사이즈++
+
+    ListNode* last;
+    ListNode* cur = ll->head;
+    unsigned int idx = 0;
+
+    while (cur != NULL) {
+        if (cur->item == item)
+            return -1;
+
+        if (cur->item > item)
+            break;
+
+        last = cur;
+        cur = cur->next;
+        idx++;
+    }
+
+    ListNode* pNode = (ListNode*)malloc(sizeof(ListNode));
+
+    if (cur != NULL) {
+        pNode->item = item;
+        pNode->next = cur->next;
+        cur->next = pNode;
+    } else {
+        pNode->item = item;
+        pNode->next = NULL;
+        if (ll->size == 0)
+            ll->head = pNode;
+        else
+            last->next = pNode;
+    }
+    ll->size = ll->size + 1;
+    return idx;
+}
 
 ///////////////////////////////////////////////////////////////////////////////////
 
